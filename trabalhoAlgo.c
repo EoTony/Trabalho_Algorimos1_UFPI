@@ -41,7 +41,7 @@ void limpezaBuffer(){
     while((aux = getchar()) != '\n' && aux != EOF);
 }
 void registroAbelhas(Abelha *p){
-    const char regioes[][39] = {"Norte","Nordeste","Centro-Oeste","Sudeste","Sul"};
+    char regioes[][39] = {"Norte","Nordeste","Centro-Oeste","Sudeste","Sul"};
     int opcao;  
     do{
         printf("Informe o nome popular:\n");
@@ -124,7 +124,7 @@ int alterarAbelha(Abelha *p,int opcao){
             }while(strlen(p->nomeCientifico) == 0);
             break;
         case 3:
-            const char regioes[][39] = {"Norte","Nordeste","Centro-Oeste","Sudeste","Sul"};
+            char regioes[][39] = {"Norte","Nordeste","Centro-Oeste","Sudeste","Sul"};
             int opcaoRegiao;
             do{
                 printf("Escolha a regiao:\n");
@@ -163,7 +163,7 @@ int alterarAbelha(Abelha *p,int opcao){
     return 0;
 }
 int registroSensores(Sensor *p1, Abelha *p2){
-    const char tipo[][13] = {"Temperatura","Umidade","Luminosidade"};
+    char tipo[][13] = {"Temperatura","Umidade","Luminosidade"};
     int opcao;
     do{
         printf("Escolha o tipo de sensor:\n");
@@ -306,7 +306,7 @@ int deletarSensor(Sensor s[], int idSensor){
 int alterarSensor(Sensor *p,int opcao){
     switch(opcao){
         case 1:
-            const char tipo[][13] = {"Temperatura","Umidade","Luminosidade"};
+            char tipo[][13] = {"Temperatura","Umidade","Luminosidade"};
             int opcaoTipo;
             do{
                 printf("Escolha o tipo de sensor:\n");
@@ -778,7 +778,7 @@ int main(){
                         case 'C':
                         case 'c':
                             int totalRegioes[5] = {0};
-                            const char regioes[][39] = {"Norte","Nordeste","Centro-Oeste","Sudeste","Sul"};
+                            char regioes[][39] = {"Norte","Nordeste","Centro-Oeste","Sudeste","Sul"};
                             for(int i = 0;i < 5;i++){
                                 totalRegioes[i] = quantidadePorRegiao(abelhas,regioes[i]);
                             }
