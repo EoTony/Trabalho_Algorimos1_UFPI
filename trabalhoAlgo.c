@@ -47,14 +47,14 @@ void registroAbelhas(Abelha *p){
         printf("Informe o nome popular:\n");
         scanf(" %39[^\n]",p->nomePopular);
         if(strlen(p->nomePopular) == 0){
-            printf("Nome invalido!Tente novamente.\n");
+            printf("!!! Nome invalido! Tente novamente. !!!\n");
         } 
     }while(strlen(p->nomePopular) == 0);
     do{
         printf("Informe o nome cientifico:\n");
         scanf(" %49[^\n]",p->nomeCientifico);
         if(strlen(p->nomeCientifico) == 0){
-            printf("Nome invalido!Tente novamente.\n");
+            printf("!!! Nome invalido! Tente novamente. !!!\n");
         }
     }while(strlen(p->nomeCientifico) == 0);
     do{
@@ -70,7 +70,7 @@ void registroAbelhas(Abelha *p){
             opcao = -1;
         }
         if(opcao < 0 || opcao > 4){
-            printf("Regiao invalida!Tente novamente.\n");
+            printf("!!! Regiao invalida! Tente novamente. !!!\n");
         }
     }while(opcao < 0 || opcao > 4);
     strcpy(p->regiao,regioes[opcao]);
@@ -81,7 +81,7 @@ void registroAbelhas(Abelha *p){
             p->producaoMel = -1;
         }
         if(p->producaoMel < 0){
-            printf("Producao invalida!Tente novamente.\n");
+            printf("!!! Producao invalida! Tente novamente. !!!\n");
         }
     }while(p->producaoMel < 0);
 }
@@ -119,7 +119,7 @@ int alterarAbelha(Abelha *p,int opcao){
                 printf("Informe o novo nome cientifico:\n");
                 scanf(" %49[^\n]",p->nomeCientifico);
                 if(strlen(p->nomeCientifico) == 0){
-                    printf("Nome invalido!Tente novamente.\n");
+                    printf("!!! Nome invalido! Tente novamente. !!!\n");
                 }
             }while(strlen(p->nomeCientifico) == 0);
             break;
@@ -139,7 +139,7 @@ int alterarAbelha(Abelha *p,int opcao){
                     opcaoRegiao = -1;
                 }
                 if(opcaoRegiao < 0 || opcaoRegiao > 4){
-                    printf("Regiao invalida!Tente novamente.\n");
+                    printf("!!! Regiao invalida! Tente novamente. !!!\n");
                 }
             }while(opcaoRegiao < 0 || opcaoRegiao > 4);
             strcpy(p->regiao,regioes[opcaoRegiao]);
@@ -151,10 +151,13 @@ int alterarAbelha(Abelha *p,int opcao){
                     limpezaBuffer();
                     p->producaoMel = -1;
                 }
+                if(p->producaoMel < 0){
+                    printf("!!! Producao invalida! Tente novamente. !!!\n");
+                }
             }while(p->producaoMel < 0);  
             break;               
         default:
-            printf("Opcao invalida!\n");
+            printf("!!! Opcao invalida! !!!\n");
             break;
     }
     return 0;
@@ -173,7 +176,7 @@ int registroSensores(Sensor *p1, Abelha *p2){
             opcao = -1;
         }
         if(opcao < 0 || opcao > 2){
-            printf("Tipo invalido!Tente novamente.\n");
+            printf("!!! Tipo invalido! Tente novamente. !!!\n");
         }
     }while(opcao < 0 || opcao > 2);
     strcpy(p1->tipo,tipo[opcao]);
@@ -184,7 +187,7 @@ int registroSensores(Sensor *p1, Abelha *p2){
             p1->valor = -1;
         }
         if(p1->valor < 0){
-            printf("Valor invalido! Tente novamente.\n");
+            printf("!!! Valor invalido! Tente novamente. !!!\n");
         }
     }while(p1->valor < 0);
     do{
@@ -196,12 +199,10 @@ int registroSensores(Sensor *p1, Abelha *p2){
                 }
             }
         }
-        else{
-                printf("!!!-------------------------!!!\n");
-                printf("ID de abelha invalido!\n");
-                printf("!!!-------------------------!!!\n");
-            limpezaBuffer();
-        }
+            else{
+                printf("!!! ID de abelha invalido! !!!\n");
+                limpezaBuffer();
+            }
     }while(1);
     return 0;
 }    
@@ -497,8 +498,8 @@ int main(){
                                         id = -1;
                                     }
                                     if(id < 0){
-                                        printf("ID invalido!Tente novamente.\n");
-                                    }
+                                            printf("!!! ID invalido! Tente novamente. !!!\n");
+                                        }
                                 }while(id < 0);
                                 if(existeAbelha(abelhas,id)){
                                     char confirma;
@@ -513,20 +514,16 @@ int main(){
                                             printf("*-------------------------*\n");
                                         }
                                         else{
-                                            printf("!!!-------------------------!!!\n");
-                                            printf("Erro ao remover abelha!\n");
-                                            printf("!!!-------------------------!!!\n");
+                                            printf("!!! Erro ao remover abelha! !!!\n");
                                         }
                                         break;
                                     default:
-                                        printf("Remocao cancelada!\n");
+                                        printf("* Remocao cancelada! *\n");
                                         break;
                                     }
                                 }
                                 else{
-                                    printf("!!!-------------------------!!!\n");
-                                    printf("ID de abelha invalido!\n");
-                                    printf("!!!-------------------------!!!\n");
+                                    printf("!!! ID de abelha invalido! !!!\n");
                                 }
                             }
                             break;
@@ -562,7 +559,7 @@ int main(){
                                 }
                             }
                             else{
-                                printf("ID de abelha invalido!\n");
+                                printf("!!! ID de abelha invalido! !!!\n");
                             }
                             break;
                         }
@@ -572,10 +569,8 @@ int main(){
                             printf("Saindo do gerenciamento de abelhas!\n");
                             printf("*-------------------------*\n");
                             break;
-                        default:
-                            printf("!!!-------------------------!!!\n");
-                            printf("ERRO Opcao invalida!\n");
-                            printf("!!!-------------------------!!!\n");
+                            default:
+                                printf("!!! ERRO Opcao invalida! !!!\n");
                     }
                     printf("---- Pressione enter para continuar ----\n");
                     limpezaBuffer();
@@ -633,7 +628,9 @@ int main(){
                         case 'C':
                         case 'c':
                             if(quantidadeAbelha(abelhas) == 0){
-                                printf("Nenhuma abelha cadastrada!Cadastre uma abelha antes.\n");
+                                printf("*-------------------------*\n");
+                                printf("Nenhuma abelha cadastrada! Cadastre uma abelha antes.\n");
+                                printf("*-------------------------*\n");
                             } 
                             else{
                                 int idAbelha;
@@ -644,15 +641,15 @@ int main(){
                                             idAbelha = -1;
                                         }
                                         if(idAbelha < 0){
-                                            printf("!!! ID invalido! Tente novamente. !!!\n");
-                                        }
+                                                    printf("!!! ID invalido! Tente novamente. !!!\n");
+                                                }
                                 }while(idAbelha < 0);
                                 if(existeAbelha(abelhas,idAbelha)){
                                     buscarSensor(sensores,idAbelha);
                                 }
-                                else{
-                                    printf("ID de abelha invalido!\n");
-                                }
+                                    else{
+                                        printf("!!! ID de abelha invalido! !!!\n");
+                                    }
                             }  
                             break;
                         case 'D':
@@ -686,10 +683,8 @@ int main(){
                                         printf("*-------------------------*\n");
                                         
                                     }
-                                    else{
-                                        printf("!!!-------------------------!!!\n");
-                                        printf("Erro ao remover sensor!\n");
-                                        printf("!!!-------------------------!!!\n");
+                                        else{
+                                        printf("!!! Erro ao remover sensor! !!!\n");
                                     }
                                     break;
                                 default:
@@ -749,9 +744,7 @@ int main(){
                             printf("*-------------------------*\n");
                             break;
                         default:
-                            printf("!!!-------------------------!!!\n");
-                            printf("ERRO Opcao invalida!\n");
-                            printf("!!!-------------------------!!!\n");
+                            printf("!!! ERRO Opcao invalida! !!!\n");
                     
                     }
                     printf("---- Pressione enter para continuar ----\n");
@@ -801,9 +794,7 @@ int main(){
                             printf("*-------------------------*\n");
                             break;
                         default:
-                            printf("!!!-------------------------!!!\n");
-                            printf("ERRO Opcao invalida!\n");
-                            printf("!!!-------------------------!!!\n");
+                            printf("!!! ERRO Opcao invalida! !!!\n");
                     }        
                     printf("---- Pressione enter para continuar ----\n");
                     limpezaBuffer();
@@ -818,9 +809,7 @@ int main(){
                 printf("*=========================*\n");
                 return 0;
             default:
-                printf("!!!-------------------------!!!\n");
-                printf("ERRO Opcao invalida!\n");
-                printf("!!!-------------------------!!!\n");
+                printf("!!! ERRO Opcao invalida! !!!\n");
         }        
         system("clear || cls");
     }while(1);
