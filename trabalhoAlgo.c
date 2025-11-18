@@ -198,7 +198,7 @@ int registroSensores(Sensor *p1, Abelha *p2){
         }
         else{
                 printf("!!!-------------------------!!!\n");
-                printf("ID de sensor invalido!\n");
+                printf("ID de abelha invalido!\n");
                 printf("!!!-------------------------!!!\n");
             limpezaBuffer();
         }
@@ -684,9 +684,12 @@ int main(){
                                         printf("*-------------------------*\n");
                                         printf("Sensor removido com sucesso!\n");
                                         printf("*-------------------------*\n");
-                                        printf("*-------------------------*\n");
+                                        
+                                    }
+                                    else{
+                                        printf("!!!-------------------------!!!\n");
                                         printf("Erro ao remover sensor!\n");
-                                        printf("*-------------------------*\n");
+                                        printf("!!!-------------------------!!!\n");
                                     }
                                     break;
                                 default:
